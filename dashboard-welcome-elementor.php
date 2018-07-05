@@ -30,6 +30,8 @@ final class DWE_Plugin {
 	public function __construct()
 	{
 		require_once IBX_DWE_DIR . 'classes/class-dwe-admin.php';
+
+		$dwe_admin = DWE_Plugin\Admin::get_instance();
 	}
 
 	public static function get_instance()

@@ -9,29 +9,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-final class DWE_Admin {
+/**
+ * Handles admin logic.
+ */
+final class Admin {
+	/**
+	 * Holds the current class object.
+	 * 
+	 * @since 1.0.0
+	 * @var object
+	 */
 	public static $instance;
 
+	/**
+	 * Holds the settings page slug.
+	 * 
+	 * @since 1.0.0
+	 * @var string
+	 */
 	public $settings_page;
 
+	/**
+	 * Holds the settings page title.
+	 * 
+	 * @since 1.0.0
+	 * @var string
+	 */
 	public $settings_title;
 
-	public $settings;
-
 	/**
-     * Holds the CSS classes.
-     *
-     * @since 1.0.0
-     * @access protected
-     * @var string
-     */
-	public $classes;
+	 * Holds the settings.
+	 * 
+	 * @since 1.0.0
+	 * @var array
+	 */
+	public $settings;
 
 	/**
      * Holds the user roles.
      *
      * @since 1.0.0
-     * @access protected
      * @var array
      */
     public $roles;
@@ -40,7 +57,6 @@ final class DWE_Admin {
      * Holds the current user role.
      *
      * @since 1.0.0
-     * @access protected
      * @var string
      */
     public $current_role;
@@ -65,6 +81,12 @@ final class DWE_Admin {
 		add_action( 'plugins_loaded', array( $this, 'init_hooks' ) );
 	}
 
+	/**
+	 * Initializes the hooks and methods.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function init_hooks()
 	{
 		if ( ! is_admin() ) {
@@ -74,6 +96,12 @@ final class DWE_Admin {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 1000 );
 	}
 
+	/**
+	 * Initializes admin related logic.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function admin_init()
 	{
 		$this->update_settings();
@@ -91,40 +119,33 @@ final class DWE_Admin {
 			if ( isset( $settings[ $role ]['template'] ) && ! empty( $settings[ $role ]['template'] ) ) {
 				remove_action( 'welcome_panel', 'wp_welcome_panel' );
 				add_action( 'welcome_panel', array( $this, 'welcome_panel' ) );
-				//add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			}
 		}
 		
 		// custom fallback for the users who don't have
 		// enough capabilities to display welcome panel.
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
-			$this->classes = 'welcome-panel';
 			add_action( 'admin_notices', array( $this, 'welcome_panel' ) );
 		}
 	}
 
-	public function enqueue_scripts()
-	{
-		$screen = get_current_screen();
-		if ( $screen->base == 'dashboard' ) {
-			$settings 	= $this->settings;
-			$role		= $this->current_role;
-
-			if ( ! empty( $settings ) && isset( $settings[ $role ] ) ) {
-				if ( isset( $settings[ $role ]['template'] ) ) {
-					$template_id = $settings[ $role ]['template'];
-					//wp_enqueue_style( 'dwe-panel', esc_url( site_url() . '/wp-content/uploads/elementor/css/post-' . $template_id . '.css', false, IBX_DWE_VER, 'all' ) );
-					wp_enqueue_style( 'dwe-panel', IBX_DWE_URL . 'assets/css/dashboard.css', false, IBX_DWE_VER );
-				}
-			}
-		}
-	}
-
+	/**
+	 * Renders welcome panel.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function welcome_panel()
 	{
 		include IBX_DWE_DIR . 'includes/welcome-panel.php';
 	}
 
+	/**
+	 * Add Dashboard Welcome to admin menu.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function admin_menu()
 	{	
 		global $wp_roles;
@@ -143,6 +164,12 @@ final class DWE_Admin {
 		}
 	}
 
+	/**
+	 * Renders settings content.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function render_settings()
 	{
 		$title 			= $this->settings_title;
@@ -155,6 +182,12 @@ final class DWE_Admin {
 		include IBX_DWE_DIR . 'includes/admin-settings.php';
 	}
 
+	/**
+	 * Renders Elementor template in welcome panel.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function render_template()
 	{
 		$settings 	= $this->settings;
@@ -184,11 +217,23 @@ final class DWE_Admin {
 		}
 	}
 
+	/**
+	 * Get setting form action attribute.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
 	private function get_form_action()
 	{
 		return admin_url( '/admin.php?page=' . $this->settings_page );
 	}
 
+	/**
+	 * Get Elementor saved templates.
+	 *
+	 * @since 1.0.0
+	 * @return array
+	 */
 	private function get_templates()
 	{
 		$templates = get_posts( array(
@@ -208,6 +253,12 @@ final class DWE_Admin {
         return $options;
 	}
 
+	/**
+	 * Get user roles.
+	 *
+	 * @since 1.0.0
+	 * @return mixed
+	 */
 	private function get_user_role()
 	{
 		// Get current user role in multisite network using WP_User_Query.
@@ -230,6 +281,12 @@ final class DWE_Admin {
         return $roles;
 	}
 
+	/**
+	 * Get setting form database.
+	 *
+	 * @since 1.0.0
+	 * @return array
+	 */
 	public function get_settings()
 	{
 		$settings = get_option( '_dwe_templates', array() );
@@ -238,6 +295,11 @@ final class DWE_Admin {
 		return $settings;
 	}
 
+	/**
+	 * Update settings in database
+	 *
+	 * @since 1.0.0
+	 */
 	public function update_settings()
 	{
 		if ( ! isset( $_POST['dwe_settings_nonce'] ) || ! wp_verify_nonce( $_POST['dwe_settings_nonce'], 'dwe_settings' ) ) {
@@ -251,14 +313,18 @@ final class DWE_Admin {
 		update_option( '_dwe_templates', $_POST['dwe_templates'] );
 	}
 
+	/**
+	 * Get class instance.
+	 *
+	 * @since 1.0.0
+	 * @return object
+	 */
 	public static function get_instance()
 	{
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof DWE_Admin ) ) {
-			self::$instance = new DWE_Admin();
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof DWE_Plugin\Admin ) ) {
+			self::$instance = new Admin();
 		}
 
 		return self::$instance;
 	}
 }
-
-$dwe_admin = DWE_Admin::get_instance();
