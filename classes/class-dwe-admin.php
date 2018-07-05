@@ -182,6 +182,7 @@ final class Admin {
 			if ( isset( $settings[ $role ]['template'] ) && ! empty( $settings[ $role ]['template'] ) ) {
 				$template_id = $settings[ $role ]['template'];
 				$dismissible = isset( $settings[ $role ]['dismissible'] ) ? true : false;
+				$elementor = Elementor\Plugin::$instance;
 
 				echo '<style>';
 				$css = file_get_contents( IBX_DWE_DIR . 'assets/css/dashboard.css' );
@@ -196,8 +197,13 @@ final class Admin {
 				echo $css;
 				echo '</style>';
 
-				$elementor = Elementor\Plugin::$instance;
+				$elementor->frontend->register_styles();
+				$elementor->frontend->enqueue_styles();
+
 				echo $elementor->frontend->get_builder_content( $template_id, true );
+
+				$elementor->frontend->register_scripts();
+				$elementor->frontend->enqueue_scripts();
 			}
 		}
 	}
