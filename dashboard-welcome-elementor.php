@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Dashboard Welcome for Elementor
  * Plugin URI: https://powerpackelements.com
- * Description: A set of custom, creative, unique modules for Beaver Builder to speed up your web design and development process.
+ * Description: Replaces the default WordPress dashboard welcome panel with a Elementor template.
  * Version: 1.0.0
  * Author: Team IdeaBox - PowerPack Elements
  * Author URI: https://ideaboxcreations.com
