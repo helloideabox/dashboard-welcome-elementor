@@ -77,23 +77,8 @@ final class Admin {
 		$this->settings_title = __('Dashboard Welcome', 'ibx-dwe');
 		$this->settings = $this->get_settings();
 
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'plugins_loaded', array( $this, 'init_hooks' ) );
-	}
-
-	/**
-	 * Initializes the hooks and methods.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function init_hooks()
-	{
-		if ( ! is_admin() ) {
-			return;
-		}
-		
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 1000 );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
 	}
 
 	/**
