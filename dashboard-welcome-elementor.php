@@ -6,7 +6,7 @@
  * Version: 1.0.0
  * Author: Team IdeaBox - PowerPack Elements
  * Author URI: https://ideaboxcreations.com
- * Copyright: (c) 2016 IdeaBox Creations
+ * Copyright: (c) 2018 IdeaBox Creations
  * License: GNU General Public License v2.0
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: ibx-dwe
