@@ -3,7 +3,7 @@ Replaces the default WordPress dashboard welcome panel with custom designed Elem
 
 ### Description ###
 
-Dashboard Welcome by [PowerPack Elements](https://powerpackelements.com/?utm_medium=dashboard-welcome&utm_source=repo-readme&utm_campaign=repo-homepage-link "PowerPack Elements") gives you full control over the WordPress welcome panel using Elementor. You can personalize the dashboard with content and design built with Elementor. You can add heading, contact information, form, video, images, affiliate links, etc.
+Dashboard Welcome by [PowerPack Elements](https://powerpackelements.com/dashboard-welcome-elementor/?utm_medium=dashboard-welcome&utm_source=repo-readme&utm_campaign=repo-homepage-link "PowerPack Elements") gives you full control over the WordPress welcome panel using Elementor. You can personalize the dashboard with content and design built with Elementor. You can add heading, contact information, form, video, images, affiliate links, etc.
 
 PLUS, you can display a template as per the user role.
 
