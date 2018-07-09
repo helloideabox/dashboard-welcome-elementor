@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Dashboard Welcome for Elementor
- * Plugin URI: https://powerpackelements.com
+ * Plugin URI: https://powerpackelements.com/dashboard-welcome-elementor/
  * Description: Replaces the default WordPress dashboard welcome panel with a Elementor template.
  * Version: 1.0.0
  * Author: Team IdeaBox - PowerPack Elements
@@ -10,7 +10,6 @@
  * License: GNU General Public License v2.0
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: ibx-dwe
- * Domain Path: /languages
  */
 
 // Exit if accessed directly.
