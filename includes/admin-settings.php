@@ -1,6 +1,5 @@
 <div class="dwe-settings-header">
 	<h2><?php echo $title; ?></h2>
-	<?php //print_r( $settings ); ?>
 </div>
 <div class="dwe-settings-wrap">
 	<form method="post" id="dwe-settings-form" action="<?php echo $form_action; ?>">
