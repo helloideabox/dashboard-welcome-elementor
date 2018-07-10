@@ -301,7 +301,13 @@ final class Admin {
 			return;
 		}
 
-		update_option( '_dwe_templates', $_POST['dwe_templates'] );
+		$data = array();
+
+		foreach ( $_POST['dwe_templates'] as $user_role => $template ) {
+			$data[ $user_role ] = array_map( 'sanitize_text_field', wp_unslash( $template ) );
+		}
+
+		update_option( '_dwe_templates', $data );
 	}
 
 	/**
