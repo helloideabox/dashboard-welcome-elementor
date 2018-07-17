@@ -4,7 +4,7 @@
  * Plugin URI: https://powerpackelements.com/dashboard-welcome-elementor/
  * Description: Replaces the default WordPress dashboard welcome panel with a Elementor template.
  * Version: 1.0.0
- * Author: Team IdeaBox - PowerPack Elements
+ * Author: IdeaBox Creations
  * Author URI: https://ideaboxcreations.com
  * Copyright: (c) 2018 IdeaBox Creations
  * License: GNU General Public License v2.0
