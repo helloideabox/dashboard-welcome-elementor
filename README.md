@@ -9,6 +9,8 @@ PLUS, you can display a template as per the user role.
 
 #### How this works? ####
 
+[How this works?](https://youtu.be/2wG1Jb0B7T4)
+
 *   Create a layout with Elementor.
 *   Go to plugin settings and select the layout from dropdown for any user role.
 *   Save the setting. Done!
