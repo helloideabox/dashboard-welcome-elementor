@@ -74,7 +74,7 @@ final class Admin {
 		}
 
 		$this->settings_page = 'dwe-settings';
-		$this->settings_title = __('Dashboard Welcome', 'ibx-dwe');
+		$this->settings_title = __('Dashboard Welcome for Elementor', 'ibx-dwe');
 		$this->settings = $this->get_settings();
 
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 1000 );
@@ -140,12 +140,12 @@ final class Admin {
 
 		if ( current_user_can( 'manage_options' ) ) {
 
-			$title = $this->settings_title;
+			$title = __('Dashboard Welcome Elementor', 'ibx-dwe');
 			$cap   = 'manage_options';
 			$slug  = $this->settings_page;
 			$func  = array( $this, 'render_settings' );
 
-			add_submenu_page( 'elementor', $title, $title, $cap, $slug, $func );
+			add_submenu_page( 'options-general.php', $title, $title, $cap, $slug, $func );
 		}
 	}
 
