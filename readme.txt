@@ -43,5 +43,5 @@ PLUS, you can display a template as per the user role.
 
 == Changelog ==
 
-= 1.0.0 - July 9, 2018 =
+= 1.0.0 - July 17, 2018 =
 *   Initial Release
