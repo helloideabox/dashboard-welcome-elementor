@@ -104,13 +104,13 @@ final class Admin {
 			if ( isset( $settings[ $role ]['template'] ) && ! empty( $settings[ $role ]['template'] ) ) {
 				remove_action( 'welcome_panel', 'wp_welcome_panel' );
 				add_action( 'welcome_panel', array( $this, 'welcome_panel' ) );
+
+				// custom fallback for the users who don't have
+				// enough capabilities to display welcome panel.
+				if ( ! current_user_can( 'edit_theme_options' ) ) {
+					add_action( 'admin_notices', array( $this, 'welcome_panel' ) );
+				}
 			}
-		}
-		
-		// custom fallback for the users who don't have
-		// enough capabilities to display welcome panel.
-		if ( ! current_user_can( 'edit_theme_options' ) ) {
-			add_action( 'admin_notices', array( $this, 'welcome_panel' ) );
 		}
 	}
 
