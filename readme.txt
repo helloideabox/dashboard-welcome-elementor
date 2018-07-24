@@ -51,5 +51,9 @@ Not at all! All you need to know about Elementor.
 
 == Changelog ==
 
+= 1.0.1 - July 24, 2018 =
+*   Fix: Scroll bar issue
+*	Fix: Empty widget was showing when template is not selected for different user roles
+
 = 1.0.0 - July 17, 2018 =
 *   Initial Release
