@@ -254,7 +254,7 @@ final class Admin {
 	{
 		// Get current user role in multisite network using WP_User_Query.
         if ( is_multisite() ) {
-			$user_query = new WP_User_Query( array( 'blog_id' => 1 , 'include' => array( get_current_user_id() ) ) );
+			$user_query = new \WP_User_Query( array( 'blog_id' => 1 , 'include' => array( get_current_user_id() ) ) );
 			
             if ( ! empty( $user_query->results ) ) {
 				$roles = $user_query->results[0]->roles;
