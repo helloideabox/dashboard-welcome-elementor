@@ -2,6 +2,11 @@
 	<h2><?php echo $title; ?></h2>
 </div>
 <div class="dwe-settings-wrap">
+	<?php if ( is_multisite() && get_current_blog_id() != 1 ) { ?>
+		<div class="notice notice-warning dwe-subsite-notice">
+			<p><?php esc_html_e('Please note, changing the template in subsite will override the main settings.', 'ibx-dwe'); ?></p>
+		</div>
+	<?php } ?>
 	<form method="post" id="dwe-settings-form" action="<?php echo $form_action; ?>">
 		<table class="dwe-settings-table wp-list-table widefat">
 			<tr valign="top">
@@ -58,6 +63,10 @@
 <style>
 .dwe-settings-wrap {
 	max-width: 860px;
+}
+.dwe-subsite-notice {
+	margin: 0;
+	margin-bottom: 10px;
 }
 </style>
 
