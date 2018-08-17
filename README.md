@@ -33,6 +33,10 @@ https://youtu.be/2wG1Jb0B7T4
 
 ### Changelog ###
 
+#### 1.0.3 - August 17, 2018 ####
+*	Fix: Templates data was not available on subsites in multisite environment
+*	Fix: Minor CSS issues
+
 #### 1.0.2 - August 3, 2018 ####
 *	Fix: PHP fatal error on multisite environment
 
