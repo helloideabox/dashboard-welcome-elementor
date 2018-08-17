@@ -138,6 +138,14 @@ final class Admin {
 		$this->roles 		= $wp_roles->get_names();
 		$this->current_role = $this->get_user_role();
 
+		if ( is_multisite() ) {
+			$hide_settings = get_blog_option( 1, 'dwe_hide_from_subsites' );
+			
+			if ( $hide_settings && get_current_blog_id() != 1 ) {
+				return;
+			}
+		}
+
 		if ( current_user_can( 'manage_options' ) ) {
 
 			$title = __('Dashboard Welcome Elementor', 'ibx-dwe');
@@ -181,7 +189,10 @@ final class Admin {
 		if ( ! empty( $settings ) && isset( $settings[ $role ] ) ) {
 			if ( isset( $settings[ $role ]['template'] ) && ! empty( $settings[ $role ]['template'] ) ) {
 				$template_id = $settings[ $role ]['template'];
+				$site_id 	 = isset( $settings[ $role ]['site'] ) ? $settings[ $role ]['site'] : '';
 				$dismissible = isset( $settings[ $role ]['dismissible'] ) ? true : false;
+				$is_multisite = is_multisite();
+
 				$elementor = Elementor\Plugin::$instance;
 
 				echo '<style>';
@@ -200,7 +211,15 @@ final class Admin {
 				$elementor->frontend->register_styles();
 				$elementor->frontend->enqueue_styles();
 
+				if ( ! empty( $site_id ) && $is_multisite ) {
+					switch_to_blog( $site_id );
+				}
+
 				echo $elementor->frontend->get_builder_content( $template_id, true );
+
+				if ( ! empty( $site_id ) && $is_multisite ) {
+					restore_current_blog();
+				}
 
 				$elementor->frontend->register_scripts();
 				$elementor->frontend->enqueue_scripts();
@@ -227,21 +246,56 @@ final class Admin {
 	 */
 	private function get_templates()
 	{
-		$templates = get_posts( array(
+		$args = array(
             'post_type'         => 'elementor_library',
 			'posts_per_page'    => '-1',
 			'post_status'		=> 'publish'
-		) );
+		);
+
+		$templates = get_posts( $args );
+
+		// Multisite support.
+		if ( is_multisite() ) {
+
+            $blog_id = get_current_blog_id();
+
+            if ( $blog_id != 1 ) {
+                switch_to_blog(1);
+
+                // Get posts from main site.
+                $main_posts = get_posts( $args );
+
+                // Loop through each main site post
+                // and add site_id to post object.
+                foreach ( $main_posts as $main_post ) {
+                    $main_post->site_id = 1;
+                }
+
+                $templates = array_merge( $templates, $main_posts );
+
+                restore_current_blog();
+            }
+            else {
+                // Loop through each main site post
+                // and add site_id to post object.
+                foreach ( $templates as $template ) {
+                    $template->site_id = 1;
+                }
+            }
+        }
 		
-		$options = array();
+		$data = array();
 
         if ( ! empty( $templates ) && ! is_wp_error( $templates ) ){
             foreach ( $templates as $post ) {
-                $options[ $post->ID ] = $post->post_title;
+                $data[ $post->ID ] = array(
+					'title'	=> $post->post_title,
+					'site'	=> isset( $post->site_id ) ? $post->site_id : null
+				);
             }
 		}
 		
-        return $options;
+        return $data;
 	}
 
 	/**
@@ -280,7 +334,19 @@ final class Admin {
 	 */
 	public function get_settings()
 	{
-		$settings = get_option( '_dwe_templates', array() );
+		$key = '_dwe_templates';
+
+		if ( is_multisite() ) {
+			$settings = get_option( $key, false );
+			$settings = ! $settings ? get_blog_option( 1, $key ) : $settings;
+		} else {
+			$settings = get_option( $key, array() );
+		}
+
+		if ( ! is_array( $settings ) ) {
+			$settings = array();
+		}
+
 		$this->settings = $settings;
 
 		return $settings;
@@ -308,6 +374,22 @@ final class Admin {
 		}
 
 		update_option( '_dwe_templates', $data );
+
+		if ( isset( $_POST['dwe_hide_from_subsites'] ) ) {
+			update_option( 'dwe_hide_from_subsites', true );
+		} else {
+			update_option( 'dwe_hide_from_subsites', false );
+		}
+	}
+
+	/**
+	 * Delete setting form database.
+	 *
+	 * @since 1.0.0
+	 */
+	public function delete_settings()
+	{
+		delete_option( '_dwe_templates' );
 	}
 
 	/**
