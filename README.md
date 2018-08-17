@@ -34,6 +34,7 @@ https://youtu.be/2wG1Jb0B7T4
 ### Changelog ###
 
 #### 1.0.3 - August 17, 2018 ####
+*	Enhancement: Added an option in main site to hide DWE settings from subsites in multisite enviornment
 *	Fix: Templates data was not available on subsites in multisite environment
 *	Fix: Minor CSS issues
 

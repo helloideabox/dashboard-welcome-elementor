@@ -52,6 +52,7 @@ Not at all! All you need to know about Elementor.
 == Changelog ==
 
 = 1.0.3 - August 17, 2018 =
+*	Enhancement: Added an option in main site to hide DWE settings from subsites in multisite enviornment
 *	Fix: Templates data was not available on subsites in multisite environment
 *	Fix: Minor CSS issues
 
