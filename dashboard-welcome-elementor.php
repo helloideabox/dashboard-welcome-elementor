@@ -75,7 +75,7 @@ final class DWE_Plugin {
 
 		$plugin = 'elementor/elementor.php';
 
-		if ( _is_elementor_installed() ) {
+		if ( function_exists( '_is_elementor_installed' ) && _is_elementor_installed() ) {
 			if ( ! current_user_can( 'activate_plugins' ) ) {
 				return;
 			}
