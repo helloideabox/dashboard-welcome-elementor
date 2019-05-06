@@ -2,7 +2,7 @@
 Contributors: ideaboxcreations, ibachal
 Tags: elementor, elementor addon, elementor template, dashboard welcome, dashboard widget, dashboard, powerpack elements, widgets, welcome, welcome screen, elementor extensions
 Requires at least: 4.6
-Tested up to: 4.9.7
+Tested up to: 5.1.1
 Requires PHP: 5.4
 Stable tag: trunk
 License: GPLv3
@@ -25,8 +25,7 @@ https://youtu.be/2wG1Jb0B7T4
 *   Save the setting. Done!
 
 = Our other Elementor addons =
-1. [White Label Branding for Elementor](https://powerpackelements.com/white-label-branding-elementor/?utm_medium=dashboard-welcome&utm_source=repo-readme&utm_campaign=wl-elementor "White Label Branding for Elementor") - Personalize Elementor to your Brand and use it worry free on your client websites. 
-2. [PowerPack for Elementor](https://powerpackelements.com/?utm_medium=dashboard-welcome&utm_source=repo-readme&utm_campaign=powerpack-elementor "PowerPack for Elementor") - Extend Elementor with 30+ Creative Widgets and build beautiful websites.
+[PowerPack for Elementor](https://powerpackelements.com/?utm_medium=dashboard-welcome&utm_source=repo-readme&utm_campaign=powerpack-elementor "PowerPack for Elementor") - Extend Elementor with 50+ Creative Widgets and build beautiful websites.
 
 == Installation ==
 

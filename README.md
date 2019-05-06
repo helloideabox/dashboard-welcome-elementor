@@ -27,9 +27,8 @@ https://youtu.be/2wG1Jb0B7T4
 *   What's the requirement for using Dashboard Welcome? - You need Elementor plugin installed and activated for Dashboard Welcome to work.
 *   Do I need coding experience to use Dashboard Welcome? - Not at all! All you need to know about Elementor.
 
-### Our other Elementor addons ###
-1. [White Label Branding for Elementor](https://powerpackelements.com/white-label-branding-elementor/?utm_medium=dashboard-welcome&utm_source=repo-readme&utm_campaign=wl-elementor "White Label Branding for Elementor") - Personalize Elementor to your Brand and use it worry free on your client websites. 
-2. [PowerPack for Elementor](https://powerpackelements.com/?utm_medium=dashboard-welcome&utm_source=repo-readme&utm_campaign=powerpack-elementor "PowerPack for Elementor") - Extend Elementor with 30+ Creative Widgets and build beautiful websites.
+### Our other Elementor addon ###
+[PowerPack for Elementor](https://powerpackelements.com/?utm_medium=dashboard-welcome&utm_source=repo-readme&utm_campaign=powerpack-elementor "PowerPack for Elementor") - Extend Elementor with 50+ Creative Widgets and build beautiful websites.
 
 ### Changelog ###
 
