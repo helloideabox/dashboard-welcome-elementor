@@ -116,3 +116,23 @@ final class DWE_Plugin {
 
 // Initialize the class.
 $dwe_plugin = DWE_Plugin::get_instance();
+
+/**
+ * Initialize the plugin tracker
+ *
+ * @return void
+ */
+function appsero_init_tracker_dashboard_welcome_for_elementor() {
+
+    if ( ! class_exists( 'Appsero\Client' ) ) {
+		require_once IBX_DWE_DIR . 'includes/appsero/src/Client.php';
+    }
+
+    $client = new Appsero\Client( 'a1e91aa7-93ee-4e13-970b-e42cdebdb6ad', 'Dashboard Welcome for Elementor', __FILE__ );
+
+    // Active insights
+    $client->insights()->init();
+
+}
+
+appsero_init_tracker_dashboard_welcome_for_elementor();
