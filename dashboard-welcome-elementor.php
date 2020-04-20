@@ -122,7 +122,7 @@ $dwe_plugin = DWE_Plugin::get_instance();
  *
  * @return void
  */
-function appsero_init_tracker_dashboard_welcome_for_elementor() {
+function appsero_init_tracker_dwe() {
 
     if ( ! class_exists( 'Appsero\Client' ) ) {
 		require_once IBX_DWE_DIR . 'includes/appsero/src/Client.php';
@@ -135,4 +135,4 @@ function appsero_init_tracker_dashboard_welcome_for_elementor() {
 
 }
 
-appsero_init_tracker_dashboard_welcome_for_elementor();
+appsero_init_tracker_dwe();
