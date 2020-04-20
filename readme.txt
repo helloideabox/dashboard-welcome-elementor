@@ -49,9 +49,12 @@ Not at all! All you need to know about Elementor.
 
 
 == Changelog ==
+= 1.0.5 - April 20, 2020 =
+* 	Tested compatibility with latest versions of WP and Elementor
+*	Added logic for usage analytics
 
 = 1.0.4 - August 28, 2018 =
-* Fix: PHP error on plugin page when Elementor is not active in multisite network
+* 	Fix: PHP error on plugin page when Elementor is not active in multisite network
 
 = 1.0.3 - August 17, 2018 =
 *	Enhancement: Added an option in main site to hide DWE settings from subsites in multisite enviornment
