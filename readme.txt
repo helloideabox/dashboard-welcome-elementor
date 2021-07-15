@@ -2,7 +2,7 @@
 Contributors: ideaboxcreations, ibachal
 Tags: elementor, elementor addon, elementor template, dashboard welcome, dashboard widget, dashboard, powerpack elements, widgets, welcome, welcome screen, elementor extensions
 Requires at least: 5.0
-Tested up to: 5.4
+Tested up to: 5.7.2
 Requires PHP: 7.0
 Stable tag: trunk
 License: GPLv3
