@@ -32,6 +32,9 @@ https://youtu.be/2wG1Jb0B7T4
 
 ### Changelog ###
 
+#### 1.0.6 - February 9, 2022 ####
+* 	Fixed compatibility issues with WordPress 5.9
+
 #### 1.0.5 - April 20, 2020 ####
 * 	Tested compatibility with latest versions of WP and Elementor
 *	Added logic for usage analytics

@@ -105,6 +105,8 @@ final class Admin {
 				remove_action( 'welcome_panel', 'wp_welcome_panel' );
 				add_action( 'welcome_panel', array( $this, 'welcome_panel' ) );
 
+				add_action( 'admin_head', array( $this, 'print_styles' ) );
+
 				// custom fallback for the users who don't have
 				// enough capabilities to display welcome panel.
 				if ( ! current_user_can( 'edit_theme_options' ) ) {
@@ -124,6 +126,61 @@ final class Admin {
 	{
 		include IBX_DWE_DIR . 'includes/welcome-panel.php';
 	}
+    
+	/**
+	 * Print styles
+	 *
+	 * @since 1.0.6
+	 * @return void
+	 */
+    public function print_styles()
+    {
+		$settings 	= $this->settings;
+		$role		= $this->current_role;
+		$dismissible = isset( $settings[ $role ]['dismissible'] ) ? true : false;
+    	?>
+    	<style type="text/css" id="dwe-dashboard-welcome-css">
+			.welcome-panel {
+				padding: 0;
+				background: none;
+				overflow: inherit;
+			}
+			.welcome-panel:before,
+			.welcome-panel:after {
+				background: none;
+			}
+			.welcome-panel .welcome-panel-close {
+				z-index: 100;
+				<?php if ( ! $dismissible ) { ?>
+					display: none;
+				<?php } ?>
+			}
+			.welcome-panel .welcome-panel-content {
+				display: none !important;
+			}
+			#dwe-dashboard-welcome {
+				-webkit-font-smoothing: antialiased;
+			}
+			#dwe-dashboard-welcome .fl-builder-content ul,
+			#dwe-dashboard-welcome .fl-builder-content ol {
+				list-style: inherit;
+			}
+			#dwe-dashboard-welcome .fl-builder-content p {
+				color: inherit;
+				font-size: inherit;
+				margin: inherit;
+				margin-bottom: 10px;
+			}
+			#dwe-dashboard-welcome input:focus,
+			#dwe-dashboard-welcome textarea:focus,
+			#dwe-dashboard-welcome select:focus,
+			#dwe-dashboard-welcome button:focus {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+		</style>
+    	<?php
+    }
 
 	/**
 	 * Add Dashboard Welcome to admin menu.
