@@ -2,8 +2,8 @@
 Contributors: ideaboxcreations, ibachal, simrandeep
 Tags: elementor, elementor addon, elementor template, dashboard welcome, dashboard widget, dashboard, powerpack elements, widgets, welcome, welcome screen, elementor extensions
 Requires at least: 5.0
-Tested up to: 5.9
-Requires PHP: 7.0
+Tested up to: 6.1.1
+Requires PHP: 7.4
 Stable tag: trunk
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -49,6 +49,9 @@ Not at all! All you need to know about Elementor.
 
 
 == Changelog ==
+= 1.0.7 - December 14, 2022 =
+* 	Security update
+
 = 1.0.6 - February 9, 2022 =
 * 	Fixed compatibility issues with WordPress 5.9
 
