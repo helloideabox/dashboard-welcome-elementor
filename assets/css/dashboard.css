@@ -1,0 +1,23 @@
+.welcome-panel {
+	padding: 0;
+    width: 100%;
+}
+
+.welcome-panel .dwe-panel-content {
+	margin-left: 0;
+	margin-right: 0;
+    max-width: 100%;
+    width: auto;
+}
+
+.welcome-panel .dwe-panel-content h3 {
+	margin: auto;
+}
+
+.welcome-panel .welcome-panel-close {
+	z-index: 100;
+}
+
+.notice.elementor-message:before {
+	content: none;
+}

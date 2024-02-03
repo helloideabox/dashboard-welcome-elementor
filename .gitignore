@@ -1,0 +1,42 @@
+# Editors
+project.xml
+project.properties
+/nbproject/private/
+.buildpath
+.project
+.settings*
+.idea
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.sublimelinterrc
+
+# Grunt
+/node_modules/
+none
+
+# Misc
+/build/
+temp/
+*.zip
+
+# Build tools lock
+composer.lock
+package-lock.json
+yarn.lock
+.wp-env.json
+
+# OS X metadata
+.DS_Store
+.idea/
+
+# Windows junk
+Thumbs.db
+
+# Composer
+/vendor/
+contributors.md
+
+# Language files
+i18n/languages/*
