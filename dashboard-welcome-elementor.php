@@ -3,7 +3,7 @@
  * Plugin Name: Dashboard Welcome for Elementor
  * Plugin URI: https://powerpackelements.com/dashboard-welcome-elementor/
  * Description: Replaces the default WordPress dashboard welcome panel with a Elementor template.
- * Version: 1.0.7
+ * Version: 1.0.8
  * Author: IdeaBox Creations
  * Author URI: https://ideaboxcreations.com
  * Copyright: (c) 2018 IdeaBox Creations
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'IBX_DWE_VER', '1.0.7' );
+define( 'IBX_DWE_VER', '1.0.8' );
 define( 'IBX_DWE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'IBX_DWE_URL', plugins_url( '/', __FILE__ ) );
 define( 'IBX_DWE_PATH', plugin_basename( __FILE__ ) );
@@ -116,23 +116,3 @@ final class DWE_Plugin {
 
 // Initialize the class.
 $dwe_plugin = DWE_Plugin::get_instance();
-
-/**
- * Initialize the plugin tracker
- *
- * @return void
- */
-function appsero_init_tracker_dwe() {
-
-    if ( ! class_exists( 'Appsero\Client' ) ) {
-		require_once IBX_DWE_DIR . 'includes/appsero/src/Client.php';
-    }
-
-    $client = new Appsero\Client( 'a1e91aa7-93ee-4e13-970b-e42cdebdb6ad', 'Dashboard Welcome for Elementor', __FILE__ );
-
-    // Active insights
-    $client->insights()->init();
-
-}
-
-appsero_init_tracker_dwe();

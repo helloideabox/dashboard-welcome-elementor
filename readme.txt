@@ -1,8 +1,8 @@
 === Dashboard Welcome for Elementor ===
 Contributors: ideaboxcreations, ibachal, simrandeep
 Tags: elementor, elementor addon, elementor template, dashboard welcome, dashboard widget, dashboard, powerpack elements, widgets, welcome, welcome screen, elementor extensions
-Requires at least: 5.0
-Tested up to: 6.1.1
+Requires at least: 6.0
+Tested up to: 6.4.3
 Requires PHP: 7.4
 Stable tag: trunk
 License: GPLv3
@@ -49,6 +49,10 @@ Not at all! All you need to know about Elementor.
 
 
 == Changelog ==
+
+= 1.0.8 - March 7, 2024 =
+*	Security update
+
 = 1.0.7 - December 14, 2022 =
 * 	Security update
 
@@ -76,13 +80,3 @@ Not at all! All you need to know about Elementor.
 
 = 1.0.0 - July 17, 2018 =
 *   Initial Release
-
-
-== Privacy Policy ==
-Dashboard Welcome for Elementor uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
-
-Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users.
-
-Integrating Appsero SDK **DOES NOT IMMEDIATELY** start gathering data, **without confirmation from users in any case.**
-
-Learn more about how [Appsero collects and uses this data](https://appsero.com/privacy-policy/).
