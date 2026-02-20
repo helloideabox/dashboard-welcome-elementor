@@ -1,3 +1,9 @@
+<?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
 <div class="dwe-settings-header">
 	<h2><?php echo $title; ?></h2>
 </div>

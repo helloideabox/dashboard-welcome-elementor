@@ -1,3 +1,9 @@
+<?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
 <div id="dwe-dashboard-welcome" class="dwe-panel-content">
 	<?php if ( ! current_user_can( 'edit_theme_options' ) ) { ?>
         <a class="welcome-panel-close" href="<?php echo admin_url('welcome=0'); ?>"><?php _e('Dismiss'); ?></a>
