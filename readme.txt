@@ -1,12 +1,13 @@
 === Dashboard Welcome for Elementor ===
 Contributors: ideaboxcreations, ibachal, simrandeep
-Tags: elementor, elementor addon, elementor template, dashboard welcome, dashboard widget, dashboard, powerpack elements, widgets, welcome, welcome screen, elementor extensions
+Tags: elementor, elementor addon, elementor template, dashboard widget, dashboard
 Requires at least: 6.3
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: trunk
-License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Stable tag: 1.0.8
+
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Replaces the default WordPress dashboard welcome panel with custom designed Elementor template.
 
