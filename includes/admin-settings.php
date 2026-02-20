@@ -10,20 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="dwe-settings-wrap">
 	<?php if ( is_multisite() && get_current_blog_id() != 1 ) { ?>
 		<div class="notice notice-warning dwe-subsite-notice">
-			<p><?php esc_html_e('Please note, changing the template in subsite will override the main settings.', 'ibx-dwe'); ?></p>
+			<p><?php esc_html_e('Please note, changing the template in subsite will override the main settings.', 'dashboard-welcome-for-elementor'); ?></p>
 		</div>
 	<?php } ?>
 	<form method="post" id="dwe-settings-form" action="<?php echo $form_action; ?>">
 		<table class="dwe-settings-table wp-list-table widefat">
 			<tr valign="top">
                 <th scope="row" valign="top">
-                    <strong><?php esc_html_e('User Role', 'ibx-dwe'); ?></strong>
+                    <strong><?php esc_html_e('User Role', 'dashboard-welcome-for-elementor'); ?></strong>
                 </th>
                 <th scope="row" valign="top">
-                    <strong><?php esc_html_e('Select Template', 'ibx-dwe'); ?></strong>
+                    <strong><?php esc_html_e('Select Template', 'dashboard-welcome-for-elementor'); ?></strong>
                 </th>
                 <th scope="row" valign="top">
-                    <strong><?php esc_html_e('Is Dismissible?', 'ibx-dwe'); ?></strong>
+                    <strong><?php esc_html_e('Is Dismissible?', 'dashboard-welcome-for-elementor'); ?></strong>
                 </th>
             </tr>
 			<?php $count = 0; foreach ( $roles as $role => $role_title ) { ?>
@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<td><?php echo $role_title; ?></td>
 				<td>
 					<select name="dwe_templates[<?php echo $role; ?>][template]" class="dwe-templates-list">
-						<option value=""><?php _e( '-- Select --', 'ibx-dwe' ); ?></option>
+						<option value=""><?php _e( '-- Select --', 'dashboard-welcome-for-elementor' ); ?></option>
 						<?php foreach ( $templates as $id => $template ) { ?>
 							<?php if ( ! empty( $settings ) && isset( $settings[$role]['template'] ) && $id == $settings[$role]['template'] ) { ?>
 								<option value="<?php echo $id; ?>" selected="selected" data-site="<?php echo null != $template['site'] ? $template['site'] : '';?>"><?php echo $template['title']; ?></option>
@@ -55,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <p>
                 <label>
                     <input type="checkbox" value="1" name="dwe_hide_from_subsites" <?php if ( get_option( 'dwe_hide_from_subsites' ) == true ) { echo 'checked="checked"'; } ?> />
-                    <?php esc_html_e( 'Hide settings from network subsites', 'ibx-dwe' ); ?>
+                    <?php esc_html_e( 'Hide settings from network subsites', 'dashboard-welcome-for-elementor' ); ?>
                 </label>
             </p>
         <?php } ?>

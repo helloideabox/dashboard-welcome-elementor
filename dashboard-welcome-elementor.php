@@ -9,7 +9,7 @@
  * Copyright: (c) 2018 IdeaBox Creations
  * License: GNU General Public License v2.0
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: ibx-dwe
+ * Text Domain: dashboard-welcome-for-elementor
  */
 
 // Exit if accessed directly.
@@ -82,8 +82,8 @@ final class DWE_Plugin {
 
 			$activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
 
-			$message = '<p>' . __( 'Dashboard Welcome is not working because you need to activate the Elementor plugin.', 'ibx-dwe' ) . '</p>';
-			$message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $activation_url, __( 'Activate Elementor Now', 'ibx-dwe' ) ) . '</p>';
+			$message = '<p>' . __( 'Dashboard Welcome is not working because you need to activate the Elementor plugin.', 'dashboard-welcome-for-elementor' ) . '</p>';
+			$message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $activation_url, __( 'Activate Elementor Now', 'dashboard-welcome-for-elementor' ) ) . '</p>';
 		} else {
 			if ( ! current_user_can( 'install_plugins' ) ) {
 				return;
@@ -91,8 +91,8 @@ final class DWE_Plugin {
 
 			$install_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
 
-			$message = '<p>' . __( 'Dashboard Welcome is not working because you need to install the Elementor plugin', 'ibx-dwe' ) . '</p>';
-			$message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $install_url, __( 'Install Elementor Now', 'ibx-dwe' ) ) . '</p>';
+			$message = '<p>' . __( 'Dashboard Welcome is not working because you need to install the Elementor plugin', 'dashboard-welcome-for-elementor' ) . '</p>';
+			$message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $install_url, __( 'Install Elementor Now', 'dashboard-welcome-for-elementor' ) ) . '</p>';
 		}
 
 		echo '<div class="error"><p>' . $message . '</p></div>';

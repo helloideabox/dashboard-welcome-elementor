@@ -1,0 +1,45 @@
+{
+	"name": "dashboard-welcome-for-elementor",
+	"version": "1.0.8",
+	"description": "Replaces the default WordPress dashboard welcome panel with a Elementor template.",
+	"keywords": [],
+	"author": "IdeaBox Creations",
+	"license": "GPLv2",
+	"main": "Gruntfile.js",
+	"browserslist": [
+		"last 2 version",
+		"> 2%"
+	],
+	"scripts": {
+		"build": "grunt",
+		"build-watch": "grunt watch",
+		"makepot": "grunt makepot",
+		"css": "grunt css",
+		"release": "grunt release",
+		"copy": "grunt copy",
+		"ver-bump": "grunt version-bump --ver"
+	},
+	"devDependencies": {
+		"autoprefixer": "^9.7.4",
+		"grunt": "^1.5.3",
+		"grunt-bumpup": "^0.6.3",
+		"grunt-checktextdomain": "^1.0.1",
+		"grunt-contrib-clean": "^2.0.0",
+		"grunt-contrib-compress": "^1.6.0",
+		"grunt-contrib-concat": "^1.0.1",
+		"grunt-contrib-copy": "^1.0.0",
+		"grunt-contrib-cssmin": "^3.0.0",
+		"grunt-contrib-jshint": "^3.2.0",
+		"grunt-contrib-uglify": "^4.0.1",
+		"grunt-contrib-watch": "^1.1.0",
+		"grunt-postcss": "^0.9.0",
+		"grunt-rtlcss": "^2.0.2",
+		"grunt-sass": "^3.1.0",
+		"grunt-stylelint": "^0.16.0",
+		"grunt-text-replace": "^0.4.0",
+		"grunt-wp-i18n": "^1.0.3",
+		"sass": "^1.79.3",
+		"stylelint": "^13.13.1",
+		"stylelint-config-wordpress": "^17.0.0"
+	}
+}
