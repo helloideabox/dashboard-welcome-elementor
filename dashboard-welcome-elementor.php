@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'IBX_DWE_VER', '1.0.8' );
-define( 'IBX_DWE_DIR', plugin_dir_path( __FILE__ ) );
-define( 'IBX_DWE_URL', plugins_url( '/', __FILE__ ) );
-define( 'IBX_DWE_PATH', plugin_basename( __FILE__ ) );
-define( 'IBX_DWE_FILE', __FILE__ );
+define( 'DWEL_VER', '1.0.8' );
+define( 'DWEL_DIR', plugin_dir_path( __FILE__ ) );
+define( 'DWEL_URL', plugins_url( '/', __FILE__ ) );
+define( 'DWEL_PATH', plugin_basename( __FILE__ ) );
+define( 'DWEL_FILE', __FILE__ );
 
 final class Dashboard_Welcome_Elementor_Plugin {
 	/**
@@ -53,7 +53,7 @@ final class Dashboard_Welcome_Elementor_Plugin {
 			return;
 		}
 
-		require_once IBX_DWE_DIR . 'classes/class-dwe-admin.php';
+		require_once DWEL_DIR . 'classes/class-dwel-admin.php';
 
 		$dwe_admin = Dashboard_Welcome_Elementor_Plugin\Admin::get_instance();
 	}
@@ -119,4 +119,4 @@ final class Dashboard_Welcome_Elementor_Plugin {
 }
 
 // Initialize the class.
-$dashboard_welcome_elementor_plugin = Dashboard_Welcome_Elementor_Plugin::get_instance();
+$dwel_plugin = Dashboard_Welcome_Elementor_Plugin::get_instance();

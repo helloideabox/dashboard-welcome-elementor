@@ -72,7 +72,7 @@ final class Admin {
 			return;
 		}
 
-		$this->settings_page = 'dwe-settings';
+		$this->settings_page = 'dwel-settings';
 		$this->settings_title = __('Dashboard Welcome for Elementor', 'dashboard-welcome-for-elementor');
 		$this->settings = $this->get_settings();
 
@@ -121,7 +121,7 @@ final class Admin {
 	 * @return void
 	 */
 	public function welcome_panel() {
-		include IBX_DWE_DIR . 'includes/welcome-panel.php';
+		include DWEL_DIR . 'includes/welcome-panel.php';
 	}
     
 	/**
@@ -135,7 +135,7 @@ final class Admin {
 		$role		= $this->current_role;
 		$dismissible = isset( $settings[ $role ]['dismissible'] ) ? true : false;
     	?>
-    	<style type="text/css" id="dwe-dashboard-welcome-css">
+    	<style type="text/css" id="dwel-dashboard-welcome-css">
 			.welcome-panel {
 				padding: 0;
 				background: none;
@@ -154,23 +154,23 @@ final class Admin {
 			.welcome-panel .welcome-panel-content {
 				display: none !important;
 			}
-			#dwe-dashboard-welcome {
+			#dwel-dashboard-welcome {
 				-webkit-font-smoothing: antialiased;
 			}
-			#dwe-dashboard-welcome .fl-builder-content ul,
-			#dwe-dashboard-welcome .fl-builder-content ol {
+			#dwel-dashboard-welcome .fl-builder-content ul,
+			#dwel-dashboard-welcome .fl-builder-content ol {
 				list-style: inherit;
 			}
-			#dwe-dashboard-welcome .fl-builder-content p {
+			#dwel-dashboard-welcome .fl-builder-content p {
 				color: inherit;
 				font-size: inherit;
 				margin: inherit;
 				margin-bottom: 10px;
 			}
-			#dwe-dashboard-welcome input:focus,
-			#dwe-dashboard-welcome textarea:focus,
-			#dwe-dashboard-welcome select:focus,
-			#dwe-dashboard-welcome button:focus {
+			#dwel-dashboard-welcome input:focus,
+			#dwel-dashboard-welcome textarea:focus,
+			#dwel-dashboard-welcome select:focus,
+			#dwel-dashboard-welcome button:focus {
 				-webkit-box-shadow: none;
 				box-shadow: none;
 			}
@@ -223,7 +223,7 @@ final class Admin {
 		$templates		= $this->get_templates();
 		$settings		= $this->get_settings();
 
-		include IBX_DWE_DIR . 'includes/admin-settings.php';
+		include DWEL_DIR . 'includes/admin-settings.php';
 	}
 
 	/**
@@ -248,7 +248,7 @@ final class Admin {
 		$elementor = \Elementor\Plugin::$instance;
 
 		// Load CSS safely.
-		$css = file_get_contents( IBX_DWE_DIR . 'assets/css/dashboard.css' );
+		$css = file_get_contents( DWEL_DIR . 'assets/css/dashboard.css' );
 
 		if ( ! $dismissible ) {
 			$css .= '.welcome-panel .welcome-panel-close{display:none;}';

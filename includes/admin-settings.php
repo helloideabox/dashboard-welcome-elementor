@@ -4,22 +4,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Template file included from Admin::render_settings_page(), function is scoped to this template only.
-function dwe_render_admin_settings_page( $title, $form_action, $roles, $templates, $settings ) {
+function dwel_render_admin_settings_page( $title, $form_action, $roles, $templates, $settings ) {
 	?>
-	<div class="dwe-settings-header">
+	<div class="dwel-settings-header">
 		<h2><?php echo esc_html( $title ); ?></h2>
 	</div>
 
-	<div class="dwe-settings-wrap">
+	<div class="dwel-settings-wrap">
 		<?php if ( is_multisite() && get_current_blog_id() !== 1 ) : ?>
-			<div class="notice notice-warning dwe-subsite-notice">
+			<div class="notice notice-warning dwel-subsite-notice">
 				<p><?php esc_html_e( 'Please note, changing the template in subsite will override the main settings.', 'dashboard-welcome-for-elementor' ); ?></p>
 			</div>
 		<?php endif; ?>
 
-		<form method="post" id="dwe-settings-form" action="<?php echo esc_url( $form_action ); ?>">
-			<table class="dwe-settings-table wp-list-table widefat">
+		<form method="post" id="dwel-settings-form" action="<?php echo esc_url( $form_action ); ?>">
+			<table class="dwel-settings-table wp-list-table widefat">
 				<tr valign="top">
 					<th scope="row"><strong><?php esc_html_e( 'User Role', 'dashboard-welcome-for-elementor' ); ?></strong></th>
 					<th scope="row"><strong><?php esc_html_e( 'Select Template', 'dashboard-welcome-for-elementor' ); ?></strong></th>
@@ -35,7 +34,7 @@ function dwe_render_admin_settings_page( $title, $form_action, $roles, $template
 						<td><?php echo esc_html( $dwe_role_title ); ?></td>
 
 						<td>
-							<select name="dwe_templates[<?php echo esc_attr( $role ); ?>][template]" class="dwe-templates-list">
+							<select name="dwe_templates[<?php echo esc_attr( $role ); ?>][template]" class="dwel-templates-list">
 								<option value=""><?php esc_html_e( '-- Select --', 'dashboard-welcome-for-elementor' ); ?></option>
 
 								<?php foreach ( $templates as $id => $dwe_template ) : ?>
@@ -99,10 +98,10 @@ function dwe_render_admin_settings_page( $title, $form_action, $roles, $template
 	</div>
 
 	<style>
-	.dwe-settings-wrap {
+	.dwel-settings-wrap {
 		max-width: 860px;
 	}
-	.dwe-subsite-notice {
+	.dwel-subsite-notice {
 		margin: 0;
 		margin-bottom: 10px;
 	}
@@ -111,7 +110,7 @@ function dwe_render_admin_settings_page( $title, $form_action, $roles, $template
 	<?php if ( is_multisite() ) { ?>
 	<script>
 	(function($) {
-		$('.dwe-templates-list').on('change', function() {
+		$('.dwel-templates-list').on('change', function() {
 			var id = $(this).val();
 			var siteId = $(this).find('option[value="'+id+'"]').data('site'); console.log(siteId);
 
@@ -125,4 +124,4 @@ function dwe_render_admin_settings_page( $title, $form_action, $roles, $template
 	<?php
 }
 
-dwe_render_admin_settings_page( $title, $form_action, $roles, $templates, $settings );
+dwel_render_admin_settings_page( $title, $form_action, $roles, $templates, $settings );

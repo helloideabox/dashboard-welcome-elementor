@@ -3,14 +3,14 @@
     width: 100%;
 }
 
-.welcome-panel .dwe-panel-content {
+.welcome-panel .dwel-panel-content {
 	margin-left: 0;
 	margin-right: 0;
     max-width: 100%;
     width: auto;
 }
 
-.welcome-panel .dwe-panel-content h3 {
+.welcome-panel .dwel-panel-content h3 {
 	margin: auto;
 }
 

@@ -337,8 +337,8 @@ module.exports = function( grunt ) {
 						to: 'Version: <%= pkg.version %>\n'
 					},
 					{
-						from: /IBX_DWE_VER', '.*?'/g,
-						to: 'IBX_DWE_VER\', \'<%= pkg.version %>\''
+						from: /DWEL_VER', '.*?'/g,
+						to: 'DWEL_VER\', \'<%= pkg.version %>\''
 					},
 				]
 			},
