@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div id="dwe-dashboard-welcome" class="dwe-panel-content">
 	<?php if ( ! current_user_can( 'edit_theme_options' ) ) { ?>
-        <a class="welcome-panel-close" href="<?php echo admin_url('welcome=0'); ?>"><?php _e('Dismiss', 'dashboard-welcome-for-elementor'); ?></a>
+        <a class="welcome-panel-close" href="<?php echo esc_url( admin_url('welcome=0') ); ?>"><?php esc_html_e( 'Dismiss', 'dashboard-welcome-for-elementor' ); ?></a>
 	<?php } ?>
 	
 	<?php $this->render_template(); ?>

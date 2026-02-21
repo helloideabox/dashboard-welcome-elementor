@@ -1,5 +1,5 @@
 <?php
-namespace DWE_Plugin;
+namespace Dashboard_Welcome_Elementor_Plugin;
 
 use Elementor;
 use Elementor\Core\Files\CSS\Post as Post_CSS;
@@ -67,8 +67,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		if ( ! is_admin() ) {
 			return;
 		}
@@ -87,8 +86,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function admin_init()
-	{
+	public function admin_init() {
 		$this->update_settings();
 
 		global $pagenow;
@@ -122,8 +120,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function welcome_panel()
-	{
+	public function welcome_panel() {
 		include IBX_DWE_DIR . 'includes/welcome-panel.php';
 	}
     
@@ -133,8 +130,7 @@ final class Admin {
 	 * @since 1.0.6
 	 * @return void
 	 */
-    public function print_styles()
-    {
+    public function print_styles() {
 		$settings 	= $this->settings;
 		$role		= $this->current_role;
 		$dismissible = isset( $settings[ $role ]['dismissible'] ) ? true : false;
@@ -188,8 +184,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function admin_menu()
-	{	
+	public function admin_menu() {
 		global $wp_roles;
 
 		$this->roles 		= $wp_roles->get_names();
@@ -220,8 +215,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function render_settings()
-	{
+	public function render_settings() {
 		$title 			= $this->settings_title;
 		$form_action 	= $this->get_form_action();
 		$roles			= $this->roles;
@@ -238,50 +232,50 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function render_template()
-	{
-		$settings 	= $this->settings;
-		$role		= $this->current_role;
+	public function render_template() {
+		$settings = $this->settings;
+		$role     = $this->current_role;
 
-		if ( ! empty( $settings ) && isset( $settings[ $role ] ) ) {
-			if ( isset( $settings[ $role ]['template'] ) && ! empty( $settings[ $role ]['template'] ) ) {
-				$template_id = $settings[ $role ]['template'];
-				$site_id 	 = isset( $settings[ $role ]['site'] ) ? $settings[ $role ]['site'] : '';
-				$dismissible = isset( $settings[ $role ]['dismissible'] ) ? true : false;
-				$is_multisite = is_multisite();
-
-				$elementor = Elementor\Plugin::$instance;
-
-				echo '<style>';
-				$css = file_get_contents( IBX_DWE_DIR . 'assets/css/dashboard.css' );
-
-				if ( ! $dismissible ) {
-					$css .= '.welcome-panel .welcome-panel-close { display: none; }';
-				}
-
-				$css = str_replace( array("\r\n", "\n", "\r\t", "\t", "\r"), '', $css );
-				$css = preg_replace('/\s+/', ' ', $css);
-
-				echo $css;
-				echo '</style>';
-
-				$elementor->frontend->register_styles();
-				$elementor->frontend->enqueue_styles();
-
-				if ( ! empty( $site_id ) && $is_multisite ) {
-					switch_to_blog( $site_id );
-				}
-
-				echo $elementor->frontend->get_builder_content( $template_id, true );
-
-				if ( ! empty( $site_id ) && $is_multisite ) {
-					restore_current_blog();
-				}
-
-				$elementor->frontend->register_scripts();
-				$elementor->frontend->enqueue_scripts();
-			}
+		if ( empty( $settings ) || ! isset( $settings[ $role ]['template'] ) ) {
+			return;
 		}
+
+		$template_id  = absint( $settings[ $role ]['template'] );
+		$site_id      = isset( $settings[ $role ]['site'] ) ? absint( $settings[ $role ]['site'] ) : 0;
+		$dismissible  = ! empty( $settings[ $role ]['dismissible'] );
+		$is_multisite = is_multisite();
+
+		$elementor = \Elementor\Plugin::$instance;
+
+		// Load CSS safely.
+		$css = file_get_contents( IBX_DWE_DIR . 'assets/css/dashboard.css' );
+
+		if ( ! $dismissible ) {
+			$css .= '.welcome-panel .welcome-panel-close{display:none;}';
+		}
+
+		$css = preg_replace( '/\s+/', ' ', $css );
+
+		echo '<style>' . esc_html( $css ) . '</style>';
+
+		$elementor->frontend->register_styles();
+		$elementor->frontend->enqueue_styles();
+
+		if ( $site_id && $is_multisite ) {
+			switch_to_blog( $site_id );
+		}
+
+		// Elementor content is trusted HTML → whitelist output.
+		echo wp_kses_post(
+			$elementor->frontend->get_builder_content( $template_id, true )
+		);
+
+		if ( $site_id && $is_multisite ) {
+			restore_current_blog();
+		}
+
+		$elementor->frontend->register_scripts();
+		$elementor->frontend->enqueue_scripts();
 	}
 
 	/**
@@ -290,8 +284,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return string
 	 */
-	private function get_form_action()
-	{
+	private function get_form_action() {
 		return admin_url( '/admin.php?page=' . $this->settings_page );
 	}
 
@@ -301,8 +294,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return array
 	 */
-	private function get_templates()
-	{
+	private function get_templates() {
 		$args = array(
             'post_type'         => 'elementor_library',
 			'posts_per_page'    => '-1',
@@ -361,8 +353,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return mixed
 	 */
-	private function get_user_role()
-	{
+	private function get_user_role() {
 		// Get current user role in multisite network using WP_User_Query.
         if ( is_multisite() ) {
 			$user_query = new \WP_User_Query( array( 'blog_id' => 1 , 'include' => array( get_current_user_id() ) ) );
@@ -389,8 +380,7 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return array
 	 */
-	public function get_settings()
-	{
+	public function get_settings() {
 		$key = '_dwe_templates';
 
 		if ( is_multisite() ) {
@@ -414,29 +404,38 @@ final class Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function update_settings()
-	{
-		if ( ! isset( $_POST['dwe_settings_nonce'] ) || ! wp_verify_nonce( $_POST['dwe_settings_nonce'], 'dwe_settings' ) ) {
+	public function update_settings() {
+		// Verify nonce.
+		if ( ! isset( $_POST['dwe_settings_nonce'] ) ) {
 			return;
 		}
 
-		if ( ! isset( $_POST['dwe_templates'] ) ) {
+		$nonce = sanitize_text_field(
+			wp_unslash( $_POST['dwe_settings_nonce'] )
+		);
+
+		if ( ! wp_verify_nonce( $nonce, 'dwe_settings' ) ) {
 			return;
 		}
 
-		$data = array();
+		// Validate templates input.
+		if ( empty( $_POST['dwe_templates'] ) || ! is_array( $_POST['dwe_templates'] ) ) {
+			return;
+		}
 
-		foreach ( $_POST['dwe_templates'] as $user_role => $template ) {
-			$data[ $user_role ] = array_map( 'sanitize_text_field', wp_unslash( $template ) );
+		$templates = wp_unslash( $_POST['dwe_templates'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$data      = array();
+
+		foreach ( $templates as $user_role => $template ) {
+			$data[ sanitize_key( $user_role ) ] = array_map(
+				'sanitize_text_field',
+				(array) $template
+			);
 		}
 
 		update_option( '_dwe_templates', $data );
 
-		if ( isset( $_POST['dwe_hide_from_subsites'] ) ) {
-			update_option( 'dwe_hide_from_subsites', true );
-		} else {
-			update_option( 'dwe_hide_from_subsites', false );
-		}
+		update_option( 'dwe_hide_from_subsites', isset( $_POST['dwe_hide_from_subsites'] ) );
 	}
 
 	/**
@@ -444,8 +443,7 @@ final class Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function delete_settings()
-	{
+	public function delete_settings() {
 		delete_option( '_dwe_templates' );
 	}
 
@@ -455,9 +453,8 @@ final class Admin {
 	 * @since 1.0.0
 	 * @return object
 	 */
-	public static function get_instance()
-	{
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof DWE_Plugin\Admin ) ) {
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Dashboard_Welcome_Elementor_Plugin\Admin ) ) {
 			self::$instance = new Admin();
 		}
 

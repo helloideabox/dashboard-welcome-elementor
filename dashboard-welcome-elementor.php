@@ -23,7 +23,7 @@ define( 'IBX_DWE_URL', plugins_url( '/', __FILE__ ) );
 define( 'IBX_DWE_PATH', plugin_basename( __FILE__ ) );
 define( 'IBX_DWE_FILE', __FILE__ );
 
-final class DWE_Plugin {
+final class Dashboard_Welcome_Elementor_Plugin {
 	/**
 	 * Holds the current class object.
 	 * 
@@ -37,8 +37,7 @@ final class DWE_Plugin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		add_action( 'plugins_loaded', array( $this, 'loader' ) );
 	}
 
@@ -48,8 +47,7 @@ final class DWE_Plugin {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function loader()
-	{
+	public function loader() {
 		if ( ! did_action( 'elementor/loaded' ) ) {
 			add_action( 'admin_notices', array( $this, 'plugin_load_fail' ) );
 			return;
@@ -57,7 +55,7 @@ final class DWE_Plugin {
 
 		require_once IBX_DWE_DIR . 'classes/class-dwe-admin.php';
 
-		$dwe_admin = DWE_Plugin\Admin::get_instance();
+		$dwe_admin = Dashboard_Welcome_Elementor_Plugin\Admin::get_instance();
 	}
 
 	/**
@@ -66,8 +64,7 @@ final class DWE_Plugin {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function plugin_load_fail()
-	{
+	public function plugin_load_fail() {
 		$screen = get_current_screen();
 		if ( isset( $screen->parent_file ) && 'plugins.php' === $screen->parent_file && 'update' === $screen->id ) {
 			return;
@@ -80,10 +77,14 @@ final class DWE_Plugin {
 				return;
 			}
 
-			$activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
+			$activation_url = wp_nonce_url( 'plugins.php?action=activate&plugin=' . $plugin . '&plugin_status=all&paged=1&s', 'activate-plugin_' . $plugin );
 
-			$message = '<p>' . __( 'Dashboard Welcome is not working because you need to activate the Elementor plugin.', 'dashboard-welcome-for-elementor' ) . '</p>';
-			$message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $activation_url, __( 'Activate Elementor Now', 'dashboard-welcome-for-elementor' ) ) . '</p>';
+			$message  = '<p>' . esc_html__( 'Dashboard Welcome is not working because you need to activate the Elementor plugin.', 'dashboard-welcome-for-elementor' ) . '</p>';
+			$message .= sprintf(
+				'<p><a href="%s" class="button-primary">%s</a></p>',
+				esc_url( $activation_url ),
+				esc_html__( 'Activate Elementor Now', 'dashboard-welcome-for-elementor' )
+			);
 		} else {
 			if ( ! current_user_can( 'install_plugins' ) ) {
 				return;
@@ -91,11 +92,15 @@ final class DWE_Plugin {
 
 			$install_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
 
-			$message = '<p>' . __( 'Dashboard Welcome is not working because you need to install the Elementor plugin', 'dashboard-welcome-for-elementor' ) . '</p>';
-			$message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $install_url, __( 'Install Elementor Now', 'dashboard-welcome-for-elementor' ) ) . '</p>';
+			$message  = '<p>' . esc_html__( 'Dashboard Welcome is not working because you need to install the Elementor plugin.', 'dashboard-welcome-for-elementor' ) . '</p>';
+			$message .= sprintf(
+				'<p><a href="%s" class="button-primary">%s</a></p>',
+				esc_url( $install_url ),
+				esc_html__( 'Install Elementor Now', 'dashboard-welcome-for-elementor' )
+			);
 		}
 
-		echo '<div class="error"><p>' . $message . '</p></div>';
+		echo '<div class="notice notice-error">' . wp_kses_post( $message ) . '</div>';
 	}
 
 	/**
@@ -104,10 +109,9 @@ final class DWE_Plugin {
 	 * @since 1.0.0
 	 * @return object
 	 */
-	public static function get_instance()
-	{
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof DWE_Plugin ) ) {
-			self::$instance = new DWE_Plugin();
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Dashboard_Welcome_Elementor_Plugin ) ) {
+			self::$instance = new Dashboard_Welcome_Elementor_Plugin();
 		}
 
 		return self::$instance;
@@ -115,4 +119,4 @@ final class DWE_Plugin {
 }
 
 // Initialize the class.
-$dwe_plugin = DWE_Plugin::get_instance();
+$dashboard_welcome_elementor_plugin = Dashboard_Welcome_Elementor_Plugin::get_instance();
