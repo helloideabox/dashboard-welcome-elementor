@@ -52,7 +52,8 @@ Not at all! All you need to know about Elementor.
 == Changelog ==
 
 = 1.0.9 - February 23, 2026 =
-*	Security update
+*	Enhancement: Improved plugin codebase to make the code more secure
+*	Fix: Fixed an issue with load_plugin_textdomain
 
 = 1.0.8 - March 7, 2024 =
 *	Security update
