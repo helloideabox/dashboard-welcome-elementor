@@ -32,6 +32,9 @@ https://youtu.be/2wG1Jb0B7T4
 
 ### Changelog ###
 
+#### 1.0.9 - February 23, 2026 ####
+*	Security update
+
 #### 1.0.8 - March 7, 2024 ####
 *	Security update
 
