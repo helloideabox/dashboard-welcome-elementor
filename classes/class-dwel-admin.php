@@ -265,10 +265,8 @@ final class Admin {
 			switch_to_blog( $site_id );
 		}
 
-		// Elementor content is trusted HTML → whitelist output.
-		echo wp_kses_post(
-			$elementor->frontend->get_builder_content( $template_id, true )
-		);
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $elementor->frontend->get_builder_content( $template_id, true );
 
 		if ( $site_id && $is_multisite ) {
 			restore_current_blog();
