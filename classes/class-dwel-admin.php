@@ -266,7 +266,7 @@ final class Admin {
 
 		$css = preg_replace( '/\s+/', ' ', $css );
 
-		echo '<style>' . esc_html( $css ) . '</style>';
+		echo '<style>' . wp_strip_all_tags( $css ) . '</style>';
 
 		$elementor->frontend->register_styles();
 		$elementor->frontend->enqueue_styles();

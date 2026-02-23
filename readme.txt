@@ -51,6 +51,9 @@ Not at all! All you need to know about Elementor.
 
 == Changelog ==
 
+= 1.0.10 - February 23, 2026 =
+*	Fix: Fixed an issue CSS output
+
 = 1.0.9 - February 23, 2026 =
 *	Enhancement: Improved plugin codebase to make the code more secure
 *	Fix: Fixed an issue with load_plugin_textdomain
