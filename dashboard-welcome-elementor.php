@@ -56,6 +56,10 @@ final class Dashboard_Welcome_Elementor_Plugin {
 		require_once DWEL_DIR . 'classes/class-dwel-admin.php';
 
 		$dwe_admin = Dashboard_Welcome_Elementor_Plugin\Admin::get_instance();
+
+		if ( is_admin() ) {
+			require_once DWEL_DIR . 'admin/marketing/class-dwel-marketing.php';
+		}
 	}
 
 	/**

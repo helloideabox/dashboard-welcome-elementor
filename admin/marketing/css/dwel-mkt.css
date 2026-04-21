@@ -1,0 +1,23 @@
+.dwel-dynamickit-wrp .elementor-control-notice {
+	position: relative;
+}
+
+.dwel-dynamickit-wrp .elementor-control-notice-icon {
+	font-size: 28px;
+	color: #93003c;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 10px 0 0;
+}
+
+.dwel-dynamickit-wrp .elementor-control-notice-main-actions {
+	margin-top: 8px;
+}
+
+.dwel-dynamickit-wrp .elementor-control-notice-dismiss {
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	padding: 2px;
+}
